@@ -1,0 +1,28 @@
+.nav{
+    display: flex;
+    background-color: rgb(164, 255, 164);
+}
+
+.titulo{
+    font-size: 20px;
+    margin: 30px;
+}
+
+.lista{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.links{
+    margin: 20px;
+}
+
+.links a{
+    text-decoration: none;
+    color: black;
+}
+
+.links a:hover{
+    color: blue;
+}
