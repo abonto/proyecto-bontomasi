@@ -1,10 +1,9 @@
 import NavBar from "../NavBar/NavBar";
 
-
 const Header = () => {
     return (
         <header>
-            <NavBar />
+            <NavBar isFooter={true}/>
         </header>
     );
 }

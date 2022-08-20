@@ -26,3 +26,7 @@
 .links a:hover{
     color: blue;
 }
+
+.icon{
+    margin-top: 20px;
+}

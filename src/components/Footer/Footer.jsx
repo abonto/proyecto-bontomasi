@@ -1,6 +1,10 @@
+import NavBar from "../NavBar/NavBar";
+import estilos from "./footer.module.css";
+
 const Footer = () => {
     return(
-        <footer>
+        <footer className={estilos.footer}>
+            <NavBar isFooter={false}/>
         </footer>
     )
 }   
