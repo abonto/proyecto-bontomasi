@@ -1,11 +1,10 @@
 import React from 'react'
 
-const Main = () => {
+const Main = ({saludar}) => {
 
   return (
     <main className='container-main'>
-        <section>
-        </section>
+        <h2 onClick={saludar}>Bienvenidos</h2>
     </main>
   )
 }
