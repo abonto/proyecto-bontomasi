@@ -1,10 +1,11 @@
 import React from 'react'
+import ItemListContainer from '../ItemListContainer/ItemListContainer'
 
-const Main = ({saludar}) => {
+const Main = () => {
 
   return (
     <main className='container-main'>
-        <h2 onClick={saludar}>Bienvenidos</h2>
+        <ItemListContainer saludo="Bienvenidos"/>
     </main>
   )
 }

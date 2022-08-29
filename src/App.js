@@ -1,7 +1,6 @@
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemCount from "./components/ItemCount/ItemCount";
 
 const App = () => {
@@ -17,10 +16,8 @@ const App = () => {
     return (
         <>
            <Header />
-           <ItemListContainer saludo ='Bienvenidos'/>
            <Main saludar={saludar}/>
            <ItemCount stock={10} initial={5} onAdd={onAdd}/>
-           <Footer className='sticky'/>
         </>
     );     
 }
