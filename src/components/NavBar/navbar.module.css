@@ -6,6 +6,7 @@
 .titulo{
     font-size: 20px;
     margin: 30px;
+    text-decoration: none;
 }
 
 .lista{
@@ -16,14 +17,11 @@
 
 .links{
     margin: 20px;
-}
-
-.links a{
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 
-.links a:hover{
+.links :hover{
     color: blue;
 }
 

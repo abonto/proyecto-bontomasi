@@ -1,7 +1,9 @@
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
-import ItemCount from "./components/ItemCount/ItemCount";
+//import ItemCount from "./components/ItemCount/ItemCount";
+import { BrowserRouter } from "react-router-dom";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 
 const App = () => {
 
@@ -9,16 +11,17 @@ const App = () => {
         console.log("Hola");
     }
 
-    const onAdd = () => {
-        console.log('Agregado al carrito');
-    }
+    // const onAdd = () => {
+    //     console.log('Agregado al carrito');
+    // }
 
     return (
-        <>
+        <BrowserRouter>
            <Header />
            <Main saludar={saludar}/>
-           <ItemCount stock={10} initial={5} onAdd={onAdd}/>
-        </>
+           <ItemDetailContainer />
+           <Footer />
+        </BrowserRouter>
     );     
 }
 

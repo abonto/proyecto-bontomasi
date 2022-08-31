@@ -1,20 +1,20 @@
 import React from 'react'
 import CartWidget from '../CartWidget/CartWidget'
 import estilos from './navbar.module.css'
+import {Link} from 'react-router-dom'
 
 const NavBar = (props) => {
 
   if(props.isFooter){
     return (
       <nav className={estilos.nav}>
-          <h1 className={estilos.titulo}>ELECTRO</h1>
+          <Link to='/' className={estilos.titulo}>TIENDA SUPER</Link>
           <ul className={estilos.lista}>
-            <li className={estilos.links}><a href="http:/google.com">OFERTAS</a></li>
-            <li className={estilos.links}><a href="http:/google.com">ELECTRODOMESTICOS</a></li>
-            <li className={estilos.links}><a href="http:/google.com">COMPUTACION</a></li>
-            <li className={estilos.links}><a href="http:/google.com">CELULARES</a></li>
+            <Link to='/category/remeras' className={estilos.links}>REMERAS</Link>
+            <Link to='/category/gorras' className={estilos.links}>GORRA</Link>
+            <Link to='/category/calzado' className={estilos.links}>CALZADO</Link>
           </ul>
-          <CartWidget />
+          <Link to='/cart'><CartWidget /></Link>
       </nav>
     )
   }else{
