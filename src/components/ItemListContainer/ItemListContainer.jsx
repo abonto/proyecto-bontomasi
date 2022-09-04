@@ -1,26 +1,48 @@
-import React, {useEffect,useState} from 'react'
-import Products from '../../mock/products';
-import ItemList from '../ItemList/ItemList';
+import React from 'react'
+import { useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import Products from '../../mock/products'
+import ItemList from '../ItemList/ItemList'
 
-const listProducts = new Promise (
-  (result, reject) => setTimeout(() => result(Products), 2000)
+const ItemListContainer = () => {
 
-);
 
-const ItemListContainer = ({saludo}) => {
+  const [items, setItems] = useState([]);
+  
+  //const {categoryName} = useParams();
 
-  const [list, setList] = useState([]);
+  // function filtroCategoria(item) {
+  //     return item.category === categoryName
+  // }
 
-  useEffect(() => {
-      listProducts.then(setList)
-  }, [])
+  const {id} = useParams()
 
-  return(
-      <section>
-          <h2>{saludo}</h2>
-          <ItemList list={list} />
-      </section>
+  useEffect(()=>{
+      const getProducts = new Promise((res, rej)=>{
 
+          const prodFiltrados = Products.filter((prod) => prod.category === id)
+
+          setTimeout(() => {res (id ? prodFiltrados : Products);}, 2000);
+          
+      });
+  
+      getProducts
+          .then((data)=>{
+              setItems(data);
+      })
+          .catch((error)=>{
+              console.log(error);
+          })
+          .finally(()=>{
+              console.log(`finally`);
+          });
+
+  }, [id]);
+
+  return (
+    <div>
+      <ItemList list={items} />
+    </div>
   )
 }
 
