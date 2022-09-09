@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ItemCount from '../ItemCount/ItemCount'
+import estilos from './Item.module.css';
 
 /*{ <div>
 <h3>{props.title}</h3>
@@ -13,12 +13,19 @@ import ItemCount from '../ItemCount/ItemCount'
 
 const Item = ({item}) => {
     return(
-        <div key={item.id}>
-            <h3>{item.title}</h3>
-            <h2>{item.description}</h2>
-            <h3>${item.price}</h3>
-            <img src={item.img} alt="" width="300"/>
-            <Link to={`/item/${item.id}`}><button>+ detalles</button></Link>
+        <div className={estilos.card}>
+            <img src={item.img} alt="" />
+            <div className={estilos.info}>
+                <h2>{item.title}</h2>
+                <h4>${item.price}.-</h4>
+                <h5>#{item.category}</h5>
+                <Link
+                    to={`/detail/${item.id}`}
+                    style={{ textDecoration: 'none' }}
+                >
+                    <button>Ver detalles</button>
+                </Link>
+            </div>
         </div>
     )
 }

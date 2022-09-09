@@ -4,46 +4,38 @@ import { useParams } from 'react-router-dom'
 import Products from '../../mock/products'
 import ItemList from '../ItemList/ItemList'
 
-const ItemListContainer = () => {
-
+const ItemListContainer = ({saludo}) => {
 
   const [items, setItems] = useState([]);
-  
-  //const {categoryName} = useParams();
 
-  // function filtroCategoria(item) {
-  //     return item.category === categoryName
-  // }
+  const { categoryName } = useParams();
 
-  const {id} = useParams()
-
-  useEffect(()=>{
-      const getProducts = new Promise((res, rej)=>{
-
-          const prodFiltrados = Products.filter((prod) => prod.category === id)
-
-          setTimeout(() => {res (id ? prodFiltrados : Products);}, 2000);
-          
-      });
-  
-      getProducts
-          .then((data)=>{
-              setItems(data);
-      })
-          .catch((error)=>{
-              console.log(error);
-          })
-          .finally(()=>{
-              console.log(`finally`);
+  useEffect(() => {
+      const getProducts = () =>
+          new Promise((res, rej) => {
+              const prodFiltrados = Products.filter(
+                  (prod) => prod.category === categoryName
+              );
+              setTimeout(() => {
+                  res(categoryName ? prodFiltrados : Products);
+              }, 500);
           });
 
-  }, [id]);
+      getProducts()
+          .then((data) => {
+              setItems(data);
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  }, [categoryName]);
 
   return (
-    <div>
-      <ItemList list={items} />
-    </div>
-  )
-}
+      <div>
+          <h2 style={{ textAlign: 'center' }}>{saludo}</h2>
+          <ItemList items={items} />
+      </div>
+  );
+};
 
-export default ItemListContainer
+export default ItemListContainer;

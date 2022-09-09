@@ -4,32 +4,35 @@ import  Products  from "../../mock/products"
 import { useParams } from "react-router-dom"
 
 export const ItemDetailContainer = () =>{
-    const [item, setItem] = useState({})
+    const [item, setItem] = useState({});
 
-    const {id} = useParams();
+    const { idProd } = useParams();
 
-    const numId = Number(id);
+    useEffect(() => {
+        const getProduct = () =>
+            new Promise((res, rej) => {
+                const prod = Products.find(
+                    (prod) => prod.id === Number(idProd)
+                );
+                setTimeout(() => {
+                    res(prod);
+                }, 500);
+            });
 
-    useEffect(()=>{
-        const getProduct = ()=> new Promise((res, rej)=>{
-
-            const prodId = Products.find((prod)=> prod.id === numId);
-
-            setTimeout(() => {res (prodId)}, 2000);
-                
-        });
         getProduct()
-        .then((data)=>{
-            setItem(data);
-        })
-        .catch((error)=>{
-            console.log(error);   
-        })
+            .then((data) => {
+                setItem(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [idProd]);
 
-    }, [numId])
-    return(
-        <ItemDetail item={item}/>
-    )
+    return (
+        <div style={{ minHeight: '70vh' }}>
+            <ItemDetail item={item} />
+        </div>
+    );
 }
 
 export default ItemDetailContainer;
