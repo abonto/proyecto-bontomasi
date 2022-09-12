@@ -32,7 +32,7 @@ const CartProvider = ({children}) => {
             if(prod.id === item.id) {
                 const prodac = {
                     ...prod,
-                    cantidad: prod.cantidad + cantidad,
+                    cantidad: cantidad,
                 };
                 return prodac;
             }else{
@@ -42,7 +42,28 @@ const CartProvider = ({children}) => {
         setCart(cartac);
     }
 
-    return <CartContext.Provider value={{cart,addToCart,clear,removeItem}}>
+    const getProductQuantity = (id) => {
+        const product = cart.find(prod => prod.id === id)
+        return product?.cantidad;
+    }
+
+    const totalUnit = () => {
+        let count = 0;
+        cart.forEach((prod) => {
+            count += prod.cantidad;
+        });
+        return count;
+    }
+
+    const totalPrice = () => {
+        let count = 0;
+        cart.forEach((prod) => {
+            count += (prod.price * prod.cantidad)
+        });
+        return count;
+    }
+
+    return <CartContext.Provider value={{cart,addToCart,clear,removeItem,getProductQuantity,totalPrice,totalUnit}}>
                 {children}
             </CartContext.Provider> 
 }

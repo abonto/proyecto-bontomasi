@@ -1,8 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
-const ItemCount = ({initial,stock,onAdd}) => {
+const ItemCount = ({initial = 1,stock,onAdd}) => {
   
     const [count,setCount] = useState(initial);
+
+    useEffect(() => {
+        setCount(initial)
+
+    }, [initial]);
 
     const addItem = () => count < stock && setCount(count+1);
 
