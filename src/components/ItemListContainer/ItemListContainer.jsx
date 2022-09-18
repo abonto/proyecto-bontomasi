@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Products from '../../mock/products'
+//import Products from '../../mock/products'
 import ItemList from '../ItemList/ItemList'
+import {collection,getDocs,query,where} from 'firebase/firestore';
+import {db} from '../../firebaseConfig';
 
 const ItemListContainer = ({saludo}) => {
 
@@ -11,24 +13,23 @@ const ItemListContainer = ({saludo}) => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-      const getProducts = () =>
-          new Promise((res, rej) => {
-              const prodFiltrados = Products.filter(
-                  (prod) => prod.category === categoryName
-              );
-              setTimeout(() => {
-                  res(categoryName ? prodFiltrados : Products);
-              }, 500);
-          });
-
-      getProducts()
-          .then((data) => {
-              setItems(data);
-          })
-          .catch((error) => {
-              console.log(error);
-          });
-  }, [categoryName]);
+    const itemCollection = collection(db,"productos");
+    const filter = query(itemCollection,where('category','==',`${categoryName}`));
+    const itemList = categoryName ? filter: itemCollection;
+    getDocs(itemList)
+    .then((res) => {
+        const products = res.docs.map((prod) => {
+            return {
+                id: prod.id,
+                ...prod.data()
+            }
+        });
+        setItems(products);
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+  },[categoryName]);
 
   return (
       <div>
@@ -39,3 +40,24 @@ const ItemListContainer = ({saludo}) => {
 };
 
 export default ItemListContainer;
+
+
+// useEffect(() => {
+//     //       const getProducts = () =>
+//     //           new Promise((res, rej) => {
+//     //               const prodFiltrados = Products.filter(
+//     //                   (prod) => prod.category === categoryName
+//     //               );
+//     //               setTimeout(() => {
+//     //                   res(categoryName ? prodFiltrados : Products);
+//     //               }, 500);
+//     //           });
+    
+//     //       getProducts()
+//     //           .then((data) => {
+//     //               setItems(data);
+//     //           })
+//     //           .catch((error) => {
+//     //               console.log(error);
+//     //           });
+//     //   }, [categoryName]);

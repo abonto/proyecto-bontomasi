@@ -63,6 +63,10 @@ const CartProvider = ({children}) => {
         return count;
     }
 
+    // useEffect(() => {
+    //     totalUnit();
+    // },[cart])  
+
     return <CartContext.Provider value={{cart,addToCart,clear,removeItem,getProductQuantity,totalPrice,totalUnit}}>
                 {children}
             </CartContext.Provider> 
