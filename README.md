@@ -6,7 +6,7 @@ Pagina de Ecommerce desarrollada para el curso de React de CoderHouse.
 
 Se puede ver el funcionamiento de la aplicacion en el siguiente [link](tienda-bontomasi-react.netlify.app)
 
-##La navegacion de la pagina incluye
+## La navegacion de la pagina incluye
 
 - Home con los productos disponibles
 - Una pagina con detalles de cada producto
@@ -15,7 +15,7 @@ Se puede ver el funcionamiento de la aplicacion en el siguiente [link](tienda-bo
 
 ###### Para guardar los datos, se implemento Firestore en el proyecto
 
-##Ejecutar el proyecto
+## Ejecutar el proyecto
 
 se debe ejecutar desde el directorio del proyecto el comando
 ### `npm start`
