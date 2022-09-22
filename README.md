@@ -1,8 +1,12 @@
 # Sobre el proyecto
 
-Pagina de Ecommerce desarrollada en React
+Pagina de Ecommerce desarrollada para el curso de React de CoderHouse.
 
-#####La navegacion de la pagina incluye
+## Link
+
+Se puede ver el funcionamiento de la aplicacion en el siguiente [link](tienda-bontomasi-react.netlify.app)
+
+##La navegacion de la pagina incluye
 
 - Home con los productos disponibles
 - Una pagina con detalles de cada producto
@@ -11,10 +15,11 @@ Pagina de Ecommerce desarrollada en React
 
 ###### Para guardar los datos, se implemento Firestore en el proyecto
 
-###En el directorio del proyecto se debe ingresar por consola
+##Ejecutar el proyecto
 
+se debe ejecutar desde el directorio del proyecto el comando
 ### `npm start`
 
+##
 Esto inicia el proyecto de forma local para poder acceder a el a traves de
 [http://localhost:3000](http://localhost:3000) para verla en el navegador.
-
