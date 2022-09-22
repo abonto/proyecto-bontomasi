@@ -1,8 +1,8 @@
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
 import { BrowserRouter } from "react-router-dom";
 import CartProvider from "./context/CartContext";
+import React from "react";
 
 const App = () => {
 
