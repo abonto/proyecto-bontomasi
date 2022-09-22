@@ -1,9 +1,9 @@
 import React from 'react'
 import estilos from "./button.module.css"
 
-const Button = ({value,variant}) => {
+const Button = ({value,variant,func}) => {
   return (
-    <button className={estilos[variant]}>{value}</button>
+    <button className={estilos[variant]} onClick={func}>{value}</button>
   )
 }
 

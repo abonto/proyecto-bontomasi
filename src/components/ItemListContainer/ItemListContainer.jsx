@@ -40,24 +40,3 @@ const ItemListContainer = ({saludo}) => {
 };
 
 export default ItemListContainer;
-
-
-// useEffect(() => {
-//     //       const getProducts = () =>
-//     //           new Promise((res, rej) => {
-//     //               const prodFiltrados = Products.filter(
-//     //                   (prod) => prod.category === categoryName
-//     //               );
-//     //               setTimeout(() => {
-//     //                   res(categoryName ? prodFiltrados : Products);
-//     //               }, 500);
-//     //           });
-    
-//     //       getProducts()
-//     //           .then((data) => {
-//     //               setItems(data);
-//     //           })
-//     //           .catch((error) => {
-//     //               console.log(error);
-//     //           });
-//     //   }, [categoryName]);

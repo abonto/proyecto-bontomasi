@@ -1,5 +1,4 @@
-import { createContext } from "react";
-import {useState} from 'react';
+import {createContext, useState} from "react";
 
 export const CartContext = createContext();
 
@@ -30,11 +29,10 @@ const CartProvider = ({children}) => {
     const sumItemCant = (item,cantidad) => {
         const cartac = cart.map((prod) => {
             if(prod.id === item.id) {
-                const prodac = {
+                return {
                     ...prod,
                     cantidad: cantidad,
                 };
-                return prodac;
             }else{
                 return prod;
             }
@@ -62,10 +60,6 @@ const CartProvider = ({children}) => {
         });
         return count;
     }
-
-    // useEffect(() => {
-    //     totalUnit();
-    // },[cart])  
 
     return <CartContext.Provider value={{cart,addToCart,clear,removeItem,getProductQuantity,totalPrice,totalUnit}}>
                 {children}

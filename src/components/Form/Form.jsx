@@ -1,60 +1,33 @@
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import React from 'react'
-import { useState } from 'react'
-import {db} from '../../firebaseConfig';
+import Button from "../Button/Button";
 
-const Form = ({cart,total,clearCart,handleId}) => {
-    
-    const [nombre,setName] = useState('');
-    const [apellido,setLastName] = useState('');
-    const [email,setEmail] = useState('');
-    const [telefono,setPhone] = useState('');
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const order = {
-            buyer: {nombre:nombre, apellido:apellido,email:email,telefono:telefono},
-            items: cart,
-            total: total,
-            date: serverTimestamp()
-        };
-
-        const ordersCollection = collection(db,'orders');
-
-        addDoc(ordersCollection,order)
-        .then((res) => {
-            handleId(res.id);
-            clearCart();
-        })
-    };  
-
-    const handleEmail = (event) => {
-        setEmail(event.target.value);
-    }
-
-    const handleChangeName = (event) => {
-        setName(event.target.value);
-    };
-
-    const handleChangeLastName = (event) => {
-        setLastName(event.target.value);
-    };
-
-    const handlePhone = (event) => {
-        setPhone(event.target.value);
-    }
-
-    return (
-        <div>
-            <form action="" onSubmit={handleSubmit}>
-                <input type="text" placeholder='Nombre' name='nombre' value={nombre} onChange={handleChangeName}/>
-                <input type="text" placeholder='Apellido' name='apellido' value={apellido} onChange={handleChangeLastName}/>
-                <input type="text" id='phone' placeholder='numero de telefono' value={telefono} onChange={handlePhone}/>
-                <input type="email" name="email" id="email" value={email} onChange={handleEmail}/>
-                <button>Enviar</button>
-            </form>
-        </div>
-    )
+const Form = ({
+        phone,
+        name,
+        email1,
+        email2,
+        handleChangeName,
+        handleChangePhone,
+        handleChangeEmail1,
+        handleChangeEmail2,
+        formValid,
+    }) => {
+         return (
+             <>
+                 <form action="" onSubmit={formValid}>
+                     <h2>Completar datos para finalizar la compra</h2>
+                     <label form="nombre">Ingresar nombre</label>
+                     <input type="text" name="nombre" id="" value={name} onChange={handleChangeName} required/>
+                     <label form="phone">Ingresar numero de telefono</label>
+                     <input type="number" name="number" id="" value={phone} onChange={handleChangePhone} required/>
+                     <label form="email">Ingresar correo electronico</label>
+                     <input type="email" name="email1" id="" value={email1} onChange={handleChangeEmail1} required/>
+                     <label form="email">Confirmar correo electronico</label>
+                     <input type="email" name="email2" id="" value={email2} onChange={handleChangeEmail2} required/>
+                     <Button value="Confirmar compra"/>
+                 </form>
+             </>
+         )
 }
 
 export default Form

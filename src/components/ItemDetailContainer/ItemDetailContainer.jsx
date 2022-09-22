@@ -30,21 +30,3 @@ export const ItemDetailContainer = () =>{
 }
 
 export default ItemDetailContainer;
-
-// const getProduct = () =>
-// new Promise((res, rej) => {
-//     const prod = Products.find(
-//         (prod) => prod.id === idProd
-//     );
-//     setTimeout(() => {
-//         res(prod);
-//     }, 500);
-// });
-
-// getProduct()
-// .then((data) => {
-//     setItem(data);
-// })
-// .catch((error) => {
-//     console.log(error);
-// });

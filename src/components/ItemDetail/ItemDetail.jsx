@@ -10,8 +10,7 @@ const ItemDetail = ({item}) => {
 
     const [cantidad, setCantidad] = useState(0);
 
-  //const {cart,addToCart} = useContext(CartContext);
-    const {addToCart,getProductQuantity} = useContext(CartContext);  
+    const {addToCart,getProductQuantity} = useContext(CartContext);
 
 
     const onAdd = (cantidadItem) => {
@@ -20,8 +19,6 @@ const ItemDetail = ({item}) => {
     };
 
     const quantity = getProductQuantity(item.id);
-
-  //console.log(cart);
 
     return (
         <div className={estilos.detail}>
