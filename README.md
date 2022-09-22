@@ -4,7 +4,7 @@ Pagina de Ecommerce desarrollada para el curso de React de CoderHouse.
 
 ## Link
 
-Se puede ver el funcionamiento de la aplicacion en el siguiente [link](tienda-bontomasi-react.netlify.app)
+Se puede ver el funcionamiento de la aplicacion en el siguiente [link](https://tienda-bontomasi-react.netlify.app)
 
 ## La navegacion de la pagina incluye
 
